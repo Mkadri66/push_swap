@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/06 15:02:11 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/11 10:43:50 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,14 @@
 # include <stdbool.h>
 # include <sys/wait.h>
 
+typedef struct s_args
+{
+    int *params;
+}   t_args;
+
+void    parsing_args(int argc, char **argv, t_args *args);
+void    verif_is_int(char **argv);
+int     is_sorted(t_args *args);
+// void    free_struct(t_args *args);
 
 #endif
