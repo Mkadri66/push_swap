@@ -1,13 +1,6 @@
 
 #include "../push_swap.h"
 
-int is_sign(char c)
-{
-    if(c == 45)
-        return(1);
-    return(0);
-}
-
 int correct_format(char *str)
 {
     int i;
@@ -35,7 +28,7 @@ void verif_is_int(char **argv)
     {
         if(!correct_format(argv[i]))
         {
-            ft_printf("error");
+            ft_printf("error\n");
             exit(1);   
         }
         i++;
@@ -56,18 +49,19 @@ void parsing_args(int argc, char **argv,t_args *args)
         i++;
     }
     args->params[j] = 0;
+    i = 0;
 }
 
 int is_sorted(int argc, t_args *args)
 {
     int i;
 
-    i = 1;
+    i = 0;
     while(i <= argc)
     {
         if(args->params[i + 1] != '\0'  && args->params[i] > args->params[i + 1])
         {
-            ft_printf("Not sorted");
+            ft_printf("Not sorted \n");
             free(args->params);
             exit(1);
         }
