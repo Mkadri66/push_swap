@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/11 16:58:10 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/12 16:42:37 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int main(int argc, char **argv)
         exit(1);
     verif_is_int(argv);
     parsing_args(argc, argv, &args);
-    is_sorted(argc, &args);
+    if(is_sorted(argc, &args))
+    {
+        free(args.params);
+        exit(1);
+    }
     return(0);
 }
