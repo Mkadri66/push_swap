@@ -6,86 +6,121 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/12 22:21:24 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/14 15:16:19 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../push_swap.h"
 
-int correct_format(char *str)
+int	correct_format(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if(str[i] == '-' || (str[i] >= '0' && str[i] <= '9'))
-        i++;
-    while(str[i])
-    {
-        if(str[i] < '0' || str[i] > '9')
-        {
-            return(0);
-        }
-        i++;
-    }
-    return(1);
+	i = 0;
+	if (str[i] == '-' || (str[i] >= '0' && str[i] <= '9'))
+		i++;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
-void verif_is_int(char **argv)
+int	verif_is_int(char **argv)
 {
-    int i; 
+	int	i;
 
-    i = 1;
-    while(argv[i])
-    {
-        if(!correct_format(argv[i]))
-        {
-            ft_printf("error\n");
-            exit(1);   
-        }
-        i++;
-    }
-}
-int parsing_args(int argc, char **argv,t_args *args)
-{
-    int i;
-    int j;
-    long number;
-
-    i = 1;
-    j = 0;
-    args->params = (int*) malloc(sizeof(int) * (argc));
-    if(!args->params)
-        return(0);
-    while(argv[i])
-    {
-        number = ft_atol(argv[i]);
-        if(number > INT_MAX || number < INT_MIN)
-        {
-            perror("Number must not exceed INT_MAX or INT_MIN");
-            free(args->params);
-            exit(1);
-        }
-        args->params[j] = number;
-        j++;
-        i++;
-    }
-    args->params[j] = 0;
-    return(0);
+	i = 1;
+	while (argv[i])
+	{
+		if (!correct_format(argv[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int is_sorted(int argc, t_args *args)
+int	parsing_args(int argc, char **argv, t_args *args)
 {
-    int i;
+	long	number;
+	int		i;
+	int		j;
 
-    i = 0;
-    while(i <= argc)
-    {
-        if(args->params[i + 1] != '\0'  && args->params[i] > args->params[i + 1])
-        {
-            return(0);
-        }
-        i++;
+	i = 1;
+	j = 0;
+	if (verif_is_int(argv) == 0)
+		display_error("error\n");
+	args->params = (int *) malloc(sizeof (int) * (argc));
+	if (!args->params)
+		return (0);
+	while (argv[i])
+	{
+		number = ft_atol(argv[i]);
+		if (number > INT_MAX || number < INT_MIN)
+		{
+			free(args->params);
+			display_error("error\n");
+		}
+		args->params[j] = number;
+		j++;
+		i++;
+	}
+	args->params[j] = 0;
+	return (0);
+}
+
+int	split_args(char *argv, t_args *args)
+{
+	int		i;
+	int		j;
+	char	**args_split;
+
+	i = 0;
+	j = 0;
+	args_split = verif_split(argv);
+	args->params = (int *) malloc(sizeof(int) * (array_len(args_split)));
+	if (!args->params)
+		return (0);
+	while (args_split[i])
+	{
+		if (ft_atol(args_split[i]) > INT_MAX
+			|| ft_atol(args_split[i]) < INT_MIN)
+		{
+			free_array(args_split);
+			free(args->params);
+			display_error("error\n");
+		}
+		args->params[j] = ft_atol(args_split[i]);
+		j++;
+		i++;
+	}
+	free_array(args_split);
+	return (1);
+}
+
+int	is_sorted(t_args *args)
+{
+	int	i;
+    int len;
+
+	i = 0;
+    len = 0;
+    while (args->params[len])
+    {  
+        len++;
     }
-    return(1);
+	while (i < len)
+	{
+		if (args->params[i + 1] != '\0'
+			&& args->params[i] > args->params[i + 1])
+        {
+			return (0);
+        }
+		i++;
+	}
+	return (1);
 }

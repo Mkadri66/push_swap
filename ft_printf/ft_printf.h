@@ -6,14 +6,13 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:08:57 by mkadri            #+#    #+#             */
-/*   Updated: 2023/11/18 00:11:09 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/13 11:02:39 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "./libft/libft.h"
 # include <stdarg.h>
 # include <string.h>
 # include <stdlib.h>

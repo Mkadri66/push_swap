@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/12 16:59:37 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/14 14:01:44 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,15 @@ typedef struct s_args
 }   t_args;
 
 int     parsing_args(int argc, char **argv, t_args *args);
-void    verif_is_int(char **argv);
-int     is_sorted(int argc, t_args *args);
+int     verif_is_int(char **argv);
+int     is_sorted(t_args *args);
 int     is_sign(char c);
 long	ft_atol(const char *str);
-// void    free_struct(t_args *args);
+int     check_double(t_args *args);
+int	    array_len(char **array);
+int     split_args(char *argv, t_args *args);
+void	free_array(char **array);
+void    display_error(char *str);
+char    **verif_split(char *argv);
 
 #endif
