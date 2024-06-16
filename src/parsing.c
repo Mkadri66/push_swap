@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/16 12:13:50 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:06:20 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	split_args(char *argv, t_args *args)
 
 	i = 0;
 	j = 0;
-	args_split = verif_split(argv);
-    args->nb_params = array_len(args_split);
+	args_split = verif_split(argv, args);
 	args->params = (int *) malloc(sizeof(int) * (array_len(args_split)));
 	if (!args->params)
 		return (0);
@@ -100,23 +99,5 @@ int	split_args(char *argv, t_args *args)
 		i++;
 	}
 	free_array(args_split);
-	return (1);
-}
-
-int	is_sorted(t_args *args)
-{
-	int	i;
-
-	i = 0;
-	while (i < args->nb_params)
-	{
-		if (args->params[i + 1] && (args->params[i] > args->params[i + 1]))
-        {
-            printf("unsorted \n");
-			return (0);
-        }
-		i++;
-	}
-    printf("sorted \n");
 	return (1);
 }

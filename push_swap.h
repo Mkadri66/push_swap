@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/16 11:05:52 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:12:42 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	    array_len(char **array);
 int     split_args(char *argv, t_args *args);
 void	free_array(char **array);
 void    display_error(char *str);
-char    **verif_split(char *argv);
+char	**verif_split(char *argv, t_args *args);
+void    check_input(t_args *args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/16 12:17:20 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:06:49 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,6 @@ long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-int	check_double(t_args *args)
-{
-	int	i;
-    int len;
-	int j;
-
-	i = 0;
-	j = 0;
-	len = args->nb_params;
-    while (i < len) {
-        j = i + 1;
-        while (j < len) {
-            if (args->params[i] == args->params[j])	
-            {
-				printf("double \n");    
-				return (1);
-			}
-            j++;
-        }
-        i++;
-    }
-	return (0);
-}
-
 void	free_array(char **array)
 {
 	int	i;
@@ -86,13 +62,7 @@ int	array_len(char **array)
 	return (i);
 }
 
-void	display_error(char *str)
-{
-	ft_printf(str);
-	exit(1);
-}
-
-char	**verif_split(char *argv)
+char	**verif_split(char *argv, t_args *args)
 {
 	char	**args_split;
 	int		len;
@@ -111,5 +81,6 @@ char	**verif_split(char *argv)
 		free_array(args_split);
 		exit(1);
 	}
+	args->nb_params = array_len(args_split);
 	return (args_split);
 }
