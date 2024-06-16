@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/14 15:19:22 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 12:17:20 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,16 @@ int	check_double(t_args *args)
 	int j;
 
 	i = 0;
-    len = 0;
 	j = 0;
-    while (args->params[len])
-    {  
-        len++;
-    }
+	len = args->nb_params;
     while (i < len) {
         j = i + 1;
         while (j < len) {
-            if (args->params[i] == args->params[j])
-                return (1);
+            if (args->params[i] == args->params[j])	
+            {
+				printf("double \n");    
+				return (1);
+			}
             j++;
         }
         i++;
@@ -110,7 +109,7 @@ char	**verif_split(char *argv)
 	if (len == 1)
 	{
 		free_array(args_split);
-		display_error("please enter more numbers\n");
+		exit(1);
 	}
 	return (args_split);
 }

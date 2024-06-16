@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/14 15:16:19 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 12:13:50 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	parsing_args(int argc, char **argv, t_args *args)
 	j = 0;
 	if (verif_is_int(argv) == 0)
 		display_error("error\n");
-	args->params = (int *) malloc(sizeof (int) * (argc));
+	args->params = (int *) malloc(sizeof (int) * (argc - 1));
 	if (!args->params)
 		return (0);
 	while (argv[i])
@@ -69,7 +69,7 @@ int	parsing_args(int argc, char **argv, t_args *args)
 		j++;
 		i++;
 	}
-	args->params[j] = 0;
+	args->nb_params = argc - 1;
 	return (0);
 }
 
@@ -82,6 +82,7 @@ int	split_args(char *argv, t_args *args)
 	i = 0;
 	j = 0;
 	args_split = verif_split(argv);
+    args->nb_params = array_len(args_split);
 	args->params = (int *) malloc(sizeof(int) * (array_len(args_split)));
 	if (!args->params)
 		return (0);
@@ -105,22 +106,17 @@ int	split_args(char *argv, t_args *args)
 int	is_sorted(t_args *args)
 {
 	int	i;
-    int len;
 
 	i = 0;
-    len = 0;
-    while (args->params[len])
-    {  
-        len++;
-    }
-	while (i < len)
+	while (i < args->nb_params)
 	{
-		if (args->params[i + 1] != '\0'
-			&& args->params[i] > args->params[i + 1])
+		if (args->params[i + 1] && (args->params[i] > args->params[i + 1]))
         {
+            printf("unsorted \n");
 			return (0);
         }
 		i++;
 	}
+    printf("sorted \n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/14 14:01:44 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/16 11:05:52 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_args
 {
     int *params;
+    int nb_params;
 }   t_args;
 
 int     parsing_args(int argc, char **argv, t_args *args);
