@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/17 15:06:46 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:06:55 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@
 # include <sys/wait.h>
 # include <limits.h>
 
+/* Args struct */
+
 typedef struct s_args
 {
 	int	*params;
 	int	nb_params;
 }	t_args;
+
+/* Args functions */
 
 int		parsing_args(int argc, char **argv, t_args *args);
 int		verif_is_int(char **argv);
@@ -41,5 +45,29 @@ void	display_error(char *str);
 void	check_input(t_args *args);
 long	ft_atol(const char *str);
 char	**verif_split(char *argv, t_args *args);
+
+/* Stack struct */
+
+typedef struct s_stack_node
+{
+	int	number;
+	int	index;
+	int	push_cost;
+	bool	above_median;
+	bool	cheapest;
+	
+	struct s_stack_node *next;
+	struct s_stack_node *previous;
+	struct s_stack_node *target_node;
+    
+}	t_stack_node;
+
+/* Stack functions */
+
+void copy_in_stack_a(t_args *args, t_stack_node **stack_a);
+void create_node(t_stack_node **stack_a, int number);
+void print_list(t_stack_node* head);
+void print_node(t_stack_node* node);
+void free_stack(t_stack_node* head);
 
 #endif
