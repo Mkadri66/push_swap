@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/18 15:06:55 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/21 16:55:38 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_stack_node
 	int	number;
 	int	index;
 	int	push_cost;
+	int	list_size;
 	bool	above_median;
 	bool	cheapest;
 	
@@ -69,5 +70,13 @@ void create_node(t_stack_node **stack_a, int number);
 void print_list(t_stack_node* head);
 void print_node(t_stack_node* node);
 void free_stack(t_stack_node* head);
+int     stack_length(t_stack_node *stack);
+
+/* Swap functions */
+
+void	swap(t_stack_node **head);
+void	sa(t_stack_node **a, bool checked);
+void	sa(t_stack_node **b, bool checked);
+void	ss(t_stack_node **a, t_stack_node **b,bool checked);
 
 #endif

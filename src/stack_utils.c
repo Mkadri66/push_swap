@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/21 16:57:40 by mkadri           ###   ########.fr       */
+/*   Created: 2024/06/21 16:25:51 by mkadri            #+#    #+#             */
+/*   Updated: 2024/06/21 16:33:14 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+# include "../push_swap.h"
 
-int	main(int argc, char **argv)
+int     stack_length(t_stack_node *stack)
 {
-	t_args	args;
-	t_stack_node	*a;
-	t_stack_node	*b;
-	
-	a = NULL;
-	b = NULL;
-	if (argc <= 1)
-		exit (1);
-	else if (argc == 2)
-		split_args(argv[1], &args);
-	else if (argc > 2)
-		parsing_args(argc, argv, &args);
-	check_input(&args);
-	copy_in_stack_a(&args, &a);
-	free_stack(a);
-	(void) b;
-	return (0);
+    int i;
+
+    i = 0;
+    if(stack == NULL)
+        return (0);
+    while(stack != NULL)
+    {
+        i++;
+        stack = stack->next;
+    }
+    return(i);
 }
