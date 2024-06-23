@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/21 16:57:40 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/23 14:25:15 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		parsing_args(argc, argv, &args);
 	check_input(&args);
 	copy_in_stack_a(&args, &a);
+	print_list(a);
 	free_stack(a);
 	(void) b;
 	return (0);

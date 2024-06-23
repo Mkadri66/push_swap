@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/21 16:55:38 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/23 14:20:37 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,21 @@ void print_list(t_stack_node* head);
 void print_node(t_stack_node* node);
 void free_stack(t_stack_node* head);
 int     stack_length(t_stack_node *stack);
+t_stack_node	*ft_lst_last(t_stack_node *lst);
 
 /* Swap functions */
 
 void	swap(t_stack_node **head);
-void	sa(t_stack_node **a, bool checked);
-void	sa(t_stack_node **b, bool checked);
-void	ss(t_stack_node **a, t_stack_node **b,bool checked);
+void	sa(t_stack_node **a, bool checker);
+void	sa(t_stack_node **b, bool checker);
+void	ss(t_stack_node **a, t_stack_node **b,bool checker);
+
+/* Rotate functions */
+
+void	rotate(t_stack_node **stack);
+void	ra(t_stack_node **a, bool checker);
+void	rb(t_stack_node **b, bool checker);
+void	rr(t_stack_node **a, t_stack_node **b,bool checker);
+
 
 #endif

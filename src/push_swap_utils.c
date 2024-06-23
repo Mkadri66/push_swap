@@ -6,13 +6,13 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/18 15:51:03 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/23 14:20:02 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_stack_node	*ft_lst_last(t_stack_node *lst)
+t_stack_node	*ft_lst_last(t_stack_node *lst)
 {
 	while (lst && lst->next)
 		lst = lst->next;
