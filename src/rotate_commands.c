@@ -15,13 +15,13 @@
 void	rotate(t_stack_node **stack)
 {
 	t_stack_node	*lastest_node;
-	int		length;
+	int				length;
 
 	length = stack_length(*stack);
-	if(length == 1 || *stack == NULL || stack == NULL )
-		return;
+	if (length == 1 || *stack == NULL || stack == NULL )
+		return ;
 	lastest_node = ft_lst_last(*stack);
-	lastest_node-> next = *stack;
+	lastest_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->previous = NULL;
 	lastest_node->next->previous = lastest_node;
@@ -30,21 +30,22 @@ void	rotate(t_stack_node **stack)
 
 void	ra(t_stack_node **a, bool checker)
 {
-    rotate(a);
-    if(!checker)
-        write(1, "ra\n", 3);
-}
-void	rb(t_stack_node **b, bool checker)
-{
-    rotate(b);
-    if(!checker)
-        write(1, "rb\n", 3);
+	rotate(a);
+	if (!checker)
+		write(1, "ra\n", 3);
 }
 
-void	rr(t_stack_node **a, t_stack_node **b,bool checker)
+void	rb(t_stack_node **b, bool checker)
 {
-    rotate(a);
-    rotate(b);
-    if(!checker)
-        write(1, "rr\n", 3);
+	rotate(b);
+	if (!checker)
+		write(1, "rb\n", 3);
+}
+
+void	rr(t_stack_node **a, t_stack_node **b, bool checker)
+{
+	rotate(a);
+	rotate(b);
+	if (!checker)
+		write(1, "rr\n", 3);
 }
