@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:22:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/16 18:22:54 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/24 19:13:38 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,11 @@ void	check_input(t_args *args)
 	if (is_sorted(args))
 	{
 		free(args->params);
-		display_error("sorted\n");
 		exit(1);
 	}
 	else if (check_double(args))
 	{
 		free(args->params);
-		display_error("double\n");
 		exit(1);
 	}
 	(void) args;

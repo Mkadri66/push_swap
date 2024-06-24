@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/24 11:14:34 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:57:22 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,9 @@ void	reverse_rotate(t_stack_node **stack);
 void	rra(t_stack_node **a, bool checker);
 void	rrb(t_stack_node **b, bool checker);
 void	rrr(t_stack_node **a, t_stack_node **b, bool checker);
+
+/* Sort functions */
+
+void sort_three(t_stack_node **a);
 
 #endif

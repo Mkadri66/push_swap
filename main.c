@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/24 11:13:07 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/24 19:12:53 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ int	main(int argc, char **argv)
 		parsing_args(argc, argv, &args);
 	check_input(&args);
 	copy_in_stack_a(&args, &a);
-    ra(&a, false);
-	print_list(a);
+    if(stack_length(a) == 2)
+        sa(&a, false);
+    else if (stack_length(a) == 3)
+        sort_three(&a);
+    print_list(a);
+    (void) b;
 	free_stack(a);
-	(void) b;
 	return (0);
 }
