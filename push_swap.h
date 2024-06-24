@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/23 14:20:37 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:14:34 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,27 @@ t_stack_node	*ft_lst_last(t_stack_node *lst);
 
 void	swap(t_stack_node **head);
 void	sa(t_stack_node **a, bool checker);
-void	sa(t_stack_node **b, bool checker);
-void	ss(t_stack_node **a, t_stack_node **b,bool checker);
+void	sb(t_stack_node **b, bool checker);
+void	ss(t_stack_node **a, t_stack_node **b, bool checker);
 
 /* Rotate functions */
 
 void	rotate(t_stack_node **stack);
 void	ra(t_stack_node **a, bool checker);
 void	rb(t_stack_node **b, bool checker);
-void	rr(t_stack_node **a, t_stack_node **b,bool checker);
+void	rr(t_stack_node **a, t_stack_node **b, bool checker);
 
+/* Push functions */
+
+void	push(t_stack_node **dest, t_stack_node **src);
+void 	pa(t_stack_node **a, t_stack_node **b, bool checker);
+void 	pb(t_stack_node **b, t_stack_node **a, bool checker);
+
+/* Reverse rotate functions */
+
+void	reverse_rotate(t_stack_node **stack);
+void	rra(t_stack_node **a, bool checker);
+void	rrb(t_stack_node **b, bool checker);
+void	rrr(t_stack_node **a, t_stack_node **b, bool checker);
 
 #endif
