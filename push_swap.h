@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/24 18:57:22 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/25 23:05:21 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void print_node(t_stack_node* node);
 void free_stack(t_stack_node* head);
 int     stack_length(t_stack_node *stack);
 t_stack_node	*ft_lst_last(t_stack_node *lst);
+t_stack_node	*find_cheapest(t_stack_node *stack);
 
 /* Swap functions */
 
@@ -92,6 +93,7 @@ void	rr(t_stack_node **a, t_stack_node **b, bool checker);
 void	push(t_stack_node **dest, t_stack_node **src);
 void 	pa(t_stack_node **a, t_stack_node **b, bool checker);
 void 	pb(t_stack_node **b, t_stack_node **a, bool checker);
+void	conclude_rotation(t_stack_node **stack, t_stack_node *top_node, char stack_name);
 
 /* Reverse rotate functions */
 
@@ -102,6 +104,13 @@ void	rrr(t_stack_node **a, t_stack_node **b, bool checker);
 
 /* Sort functions */
 
-void sort_three(t_stack_node **a);
+void	sort_three(t_stack_node **a);
+void	master_sort(t_stack_node **a, t_stack_node **b);
+
+/* Set functions */
+
+void	init_nodes(t_stack_node *a, t_stack_node *b);
+void	set_curent_index(t_stack_node *stack);
+t_stack_node	*smallest_in_stack(t_stack_node *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/24 19:12:53 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/25 23:13:50 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int argc, char **argv)
         sa(&a, false);
     else if (stack_length(a) == 3)
         sort_three(&a);
-    print_list(a);
-    (void) b;
+    else
+        master_sort(&a, &b);
 	free_stack(a);
 	return (0);
 }
