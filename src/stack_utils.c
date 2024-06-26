@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 16:25:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/25 22:52:02 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:33:39 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,4 @@ void	free_stack(t_stack_node *head)
 		free(current);
 		current = next_node;
 	}
-}
-t_stack_node *find_cheapest(t_stack_node *stack)
-{
-	if (stack == NULL)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return(stack);
-		stack = stack->next;
-	}
-	return (NULL);
 }

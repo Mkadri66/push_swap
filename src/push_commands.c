@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:33:00 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/25 20:33:25 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:39:05 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	pb(t_stack_node **b, t_stack_node **a, bool checker)
 	if (!checker)
 		write(1, "pb\n", 3);
 }
-void	conclude_rotation(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+
+void	conclude_rotation(t_stack_node **stack, t_stack_node *top_node,
+		char stack_name)
 {
 	while (*stack != top_node)
 	{
@@ -66,6 +68,6 @@ void	conclude_rotation(t_stack_node **stack, t_stack_node *top_node, char stack_
 				rb(stack, false);
 			else
 				rrb(stack, false);
-		} 
+		}
 	}
 }

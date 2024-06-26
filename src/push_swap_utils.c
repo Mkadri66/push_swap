@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/23 14:34:04 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:39:57 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,29 +83,4 @@ char	**verif_split(char *argv, t_args *args)
 	}
 	args->nb_params = array_len(args_split);
 	return (args_split);
-}
-
-void print_node(t_stack_node* node)
-{
-    printf("Number: %d\n", node->number);
-    printf("Index: %d\n", node->index);
-    printf("Push Cost: %d\n", node->push_cost);
-    printf("Above Median: %s\n", node->above_median ? "true" : "false");
-    printf("Cheapest: %s\n", node->cheapest ? "true" : "false");
-    printf("Next: %p\n", (void*)node->next);
-    printf("Previous: %p\n", (void*)node->previous);
-    printf("Target Node: %p\n", (void*)node->target_node);
-    printf("-------------------\n");
-}
-
-void print_list(t_stack_node* head)
-{
-    t_stack_node* current;
-	
-	current = head;
-    while (current != NULL)
-	{
-        print_node(current);
-        current = current->next;
-    }
 }

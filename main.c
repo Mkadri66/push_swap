@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	t_args	args;
+	t_args			args;
 	t_stack_node	*a;
 	t_stack_node	*b;
-	
+
 	a = NULL;
 	b = NULL;
 	if (argc <= 1)
@@ -28,12 +28,12 @@ int	main(int argc, char **argv)
 		parsing_args(argc, argv, &args);
 	check_input(&args);
 	copy_in_stack_a(&args, &a);
-    if(stack_length(a) == 2)
-        sa(&a, false);
-    else if (stack_length(a) == 3)
-        sort_three(&a);
-    else
-        master_sort(&a, &b);
+	if (stack_length(a) == 2)
+		sa(&a, false);
+	else if (stack_length(a) == 3)
+		sort_three(&a);
+	else
+		master_sort(&a, &b);
 	free_stack(a);
 	return (0);
 }
