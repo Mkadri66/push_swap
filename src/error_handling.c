@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:22:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/24 19:13:38 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/26 16:59:59 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int	check_double(t_args *args)
 	i = 0;
 	j = 0;
 	len = args->nb_params;
-	while (i < len)
+	if (len == 2)
+	{
+		if (args->params[0] == args->params[1])
+			return (1);
+	}
+	while (i <= len)
 	{
 		j = i + 1;
 		while (j < len)
@@ -59,12 +64,13 @@ void	display_error(char *str)
 
 void	check_input(t_args *args)
 {
-	if (is_sorted(args))
+	if (check_double(args))
 	{
 		free(args->params);
+		ft_printf("error\n");
 		exit(1);
 	}
-	else if (check_double(args))
+	if (is_sorted(args))
 	{
 		free(args->params);
 		exit(1);
