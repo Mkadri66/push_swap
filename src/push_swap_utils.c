@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/29 16:44:27 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/29 17:03:29 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char	**verif_split(char *argv, t_args *args)
 		free_array(args_split);
 		display_error("error\n");
 	}
-
 	args->nb_params = array_len(args_split);
 	return (args_split);
 }
