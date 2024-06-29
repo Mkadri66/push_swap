@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/26 17:39:57 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/29 16:44:27 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,18 @@ char	**verif_split(char *argv, t_args *args)
 	if (!args_split)
 		return (0);
 	len = array_len(args_split);
+	if (len == 1)
+	{
+		free_array(args_split);
+		display_error("error\n");
+		exit(1);
+	}
 	if (!verif_is_int(args_split))
 	{
 		free_array(args_split);
 		display_error("error\n");
 	}
-	if (len == 1)
-	{
-		free_array(args_split);
-		exit(1);
-	}
+
 	args->nb_params = array_len(args_split);
 	return (args_split);
 }

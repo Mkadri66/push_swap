@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/26 18:28:30 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/06/29 16:37:41 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void			display_error(char *str);
 void			check_input(t_args *args);
 long			ft_atol(const char *str);
 char			**verif_split(char *argv, t_args *args);
+
 /* Stack functions */
 
 void			copy_in_stack_a(t_args *args, t_stack_node **stack_a);
