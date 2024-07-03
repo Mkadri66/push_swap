@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 13:38:07 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:44:15 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,11 @@ void	free_matrix(char **argv)
 	free(argv - 1);
 }
 
-char	**verif_split(char *argv, t_args *args)
+void	error_free(t_stack_node **a,  char **argv, bool flag)
 {
-	char	**args_split;
-	int		len;
-
-	args_split = ft_split(argv, ' ');
-	if (!args_split)
-		return (0);
-	len = array_len(args_split);
-	if (len == 1)
-	{
-		free_array(args_split);
-		display_error("error\n");
-		exit(1);
-	}
-	if (!verif_is_int(args_split))
-	{
-		free_array(args_split);
-		display_error("error\n");
-	}
-
-	args->nb_params = array_len(args_split);
-	return (args_split);
+	free_stack(a);
+	if (flag)
+		free_matrix(argv);
+	write(2, "Error\n", 6);
+	exit(1);
 }
