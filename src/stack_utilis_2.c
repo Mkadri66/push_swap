@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:33:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 12:48:23 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:50:21 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_stack_node	*smallest_in_stack(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node); 
+	return (min_node);
 }
 
 t_stack_node	*find_highest(t_stack_node *stack)

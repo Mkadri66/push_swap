@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 13:01:59 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:46:13 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	correct_format(char *str)
 int	verif_is_int(char *argv)
 {
 	if (!correct_format(argv))
-			return (0);
+		return (0);
 	return (1);
 }
 
@@ -55,6 +55,6 @@ void	stack_init(t_stack_node **a, char **argv, bool flag)
 		create_node(a, (int)nbr);
 		++i;
 	}
-	if(flag)
+	if (flag)
 		free_matrix(argv);
 }

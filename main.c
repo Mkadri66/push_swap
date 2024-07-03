@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:01:26 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 13:22:51 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:51:00 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = custom_split(argv[1], ' ');
 	stack_init(&a, argv + 1, argc == 2);
-	if(!is_sorted(a))
+	if (!is_sorted(a))
 	{
 		if (stack_length(a) == 2)
 			sa(&a, false);

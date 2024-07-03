@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 13:01:33 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:51:37 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void			create_node(t_stack_node **stack_a, int number);
 void			free_stack(t_stack_node **head);
 int				stack_length(t_stack_node *stack);
 void			free_matrix(char **argv);
-void			error_free(t_stack_node **a,  char **argv, bool flag);
+void			error_free(t_stack_node **a, char **argv, bool flag);
+void			move_node_to_b(t_stack_node **a, t_stack_node **b);
+void			move_node_to_a(t_stack_node **a, t_stack_node **b);
+void			set_target_a(t_stack_node *a, t_stack_node *b);
+void			set_target_b(t_stack_node *a, t_stack_node *b);
 
 /* Swap functions */
 

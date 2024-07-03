@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:24 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 12:45:34 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:50:00 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,47 +63,20 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 
 static void	set_price(t_stack_node *a, t_stack_node *b)
 {
-	int	len_a; 
-	int	len_b; 
+	int	len_a;
+	int	len_b;
 
 	len_a = stack_length(a);
 	len_b = stack_length(b);
 	while (a)
 	{
-		a->push_cost = a->index; 
-		if (!(a->above_median)) 
-			a->push_cost = len_a - (a->index); 
+		a->push_cost = a->index;
+		if (!(a->above_median))
+			a->push_cost = len_a - (a->index);
 		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);
-		a = a->next;
-	}
-}
-static void	set_target_a(t_stack_node *a, t_stack_node *b)
-{
-	t_stack_node	*current_b;
-	t_stack_node	*target_node;
-	long			best_match_index;
-
-	while (a)
-	{
-		best_match_index = LONG_MIN;
-		current_b = b;
-		while (current_b)
-		{
-			if (current_b->number < a->number 
-				&& current_b->number > best_match_index)
-			{
-				best_match_index = current_b->number;
-				target_node = current_b;
-			}
-			current_b = current_b->next;
-		}
-		if (best_match_index == LONG_MIN)
-			a->target_node = find_highest(b);
-		else
-			a->target_node = target_node;
 		a = a->next;
 	}
 }

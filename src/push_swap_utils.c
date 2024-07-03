@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 13:44:15 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 19:49:33 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	free_matrix(char **argv)
 	free(argv - 1);
 }
 
-void	error_free(t_stack_node **a,  char **argv, bool flag)
+void	error_free(t_stack_node **a, char **argv, bool flag)
 {
 	free_stack(a);
 	if (flag)
