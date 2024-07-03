@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:33:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/26 17:47:12 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:48:23 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ t_stack_node	*find_cheapest(t_stack_node *stack)
 
 t_stack_node	*smallest_in_stack(t_stack_node *stack)
 {
-	t_stack_node	*smallest_node;
-	long			smallest;
+	long			min;
+	t_stack_node	*min_node;
 
-	if (stack == NULL)
+	if (!stack)
 		return (NULL);
-	smallest = LONG_MAX;
+	min = LONG_MAX;
 	while (stack)
 	{
-		if (stack->number < smallest)
+		if (stack->number < min)
 		{
-			smallest = stack->number;
-			smallest_node = stack;
+			min = stack->number;
+			min_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (smallest_node);
+	return (min_node); 
 }
 
 t_stack_node	*find_highest(t_stack_node *stack)
@@ -68,8 +68,8 @@ t_stack_node	*find_highest(t_stack_node *stack)
 void	reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest)
 {
-	while (*a != cheapest->target_node && *b != cheapest)
+	while (*b != cheapest->target_node && *a != cheapest)
 		rrr(a, b, false);
-	set_curent_index(*a);
-	set_curent_index(*b);
+	set_current_index(*a);
+	set_current_index(*b);
 }

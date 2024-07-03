@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/29 16:37:41 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:01:33 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,27 @@ typedef struct s_stack_node
 	struct s_stack_node			*target_node;
 }	t_stack_node;
 
-/* Args functions */
+/* Parsing functions */
 
-int				parsing_args(int argc, char **argv, t_args *args);
-int				verif_is_int(char **argv);
-int				is_sorted(t_args *args);
+int				verif_is_int(char *argv);
+bool			is_sorted(t_stack_node *a);
 int				is_sign(char c);
-int				check_double(t_args *args);
+int				check_double(t_stack_node *a, int number);
 int				array_len(char **array);
-int				split_args(char *argv, t_args *args);
 void			free_array(char **array);
 void			display_error(char *str);
-void			check_input(t_args *args);
 long			ft_atol(const char *str);
-char			**verif_split(char *argv, t_args *args);
+char			**custom_split(char *str, char separator);
 
 /* Stack functions */
 
-void			copy_in_stack_a(t_args *args, t_stack_node **stack_a);
+void			stack_init(t_stack_node **a, char **argv, bool flag);
+void			set_curent_index(t_stack_node *stack);
 void			create_node(t_stack_node **stack_a, int number);
-void			print_list(t_stack_node *head);
-void			print_node(t_stack_node *node);
-void			free_stack(t_stack_node *head);
+void			free_stack(t_stack_node **head);
 int				stack_length(t_stack_node *stack);
+void			free_matrix(char **argv);
+void			error_free(t_stack_node **a,  char **argv, bool flag);
 
 /* Swap functions */
 
@@ -108,8 +106,9 @@ void			master_sort(t_stack_node **a, t_stack_node **b);
 
 /* Set functions */
 
-void			init_nodes(t_stack_node *a, t_stack_node *b);
-void			set_curent_index(t_stack_node *stack);
+void			init_nodes_a(t_stack_node *a, t_stack_node *b);
+void			set_current_index(t_stack_node *stack);
+void			set_target_node(t_stack_node *a, t_stack_node *b);
 
 /* Stack node functions*/
 

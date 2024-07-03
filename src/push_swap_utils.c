@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:29 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/29 16:44:27 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:00:52 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,52 +37,24 @@ long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-void	free_array(char **array)
+void	free_matrix(char **argv)
 {
 	int	i;
 
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+	i = -1;
+	if (NULL == argv || NULL == *argv)
+		return ;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv - 1);
 }
 
-int	array_len(char **array)
+void	error_free(t_stack_node **a,  char **argv, bool flag)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		i++;
-	}
-	return (i);
+	free_stack(a);
+	if (flag)
+		free_matrix(argv);
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
-char	**verif_split(char *argv, t_args *args)
-{
-	char	**args_split;
-	int		len;
-
-	args_split = ft_split(argv, ' ');
-	if (!args_split)
-		return (0);
-	len = array_len(args_split);
-	if (len == 1)
-	{
-		free_array(args_split);
-		display_error("error\n");
-		exit(1);
-	}
-	if (!verif_is_int(args_split))
-	{
-		free_array(args_split);
-		display_error("error\n");
-	}
-
-	args->nb_params = array_len(args_split);
-	return (args_split);
-}

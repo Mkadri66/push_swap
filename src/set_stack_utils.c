@@ -6,13 +6,13 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:24 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/26 17:34:09 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:45:34 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	set_curent_index(t_stack_node *stack)
+void	set_current_index(t_stack_node *stack)
 {
 	int	i;
 	int	center;
@@ -33,7 +33,7 @@ void	set_curent_index(t_stack_node *stack)
 	}
 }
 
-static void	set_target_node(t_stack_node *a, t_stack_node *b)
+void	set_target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
@@ -63,49 +63,76 @@ static void	set_target_node(t_stack_node *a, t_stack_node *b)
 
 static void	set_price(t_stack_node *a, t_stack_node *b)
 {
-	int	a_length;
-	int	b_length;
+	int	len_a; 
+	int	len_b; 
 
-	a_length = stack_length(a);
-	b_length = stack_length(b);
-	while (b)
+	len_a = stack_length(a);
+	len_b = stack_length(b);
+	while (a)
 	{
-		b->push_cost = b->index;
-		if (!(b->above_median))
-			b->push_cost = b_length - (b->index);
-		if (b->target_node->above_median)
-			b->push_cost += b->target_node->index;
+		a->push_cost = a->index; 
+		if (!(a->above_median)) 
+			a->push_cost = len_a - (a->index); 
+		if (a->target_node->above_median)
+			a->push_cost += a->target_node->index;
 		else
-			b->push_cost += a_length - (b->target_node->index);
-		b = b->next;
+			a->push_cost += len_b - (a->target_node->index);
+		a = a->next;
+	}
+}
+static void	set_target_a(t_stack_node *a, t_stack_node *b)
+{
+	t_stack_node	*current_b;
+	t_stack_node	*target_node;
+	long			best_match_index;
+
+	while (a)
+	{
+		best_match_index = LONG_MIN;
+		current_b = b;
+		while (current_b)
+		{
+			if (current_b->number < a->number 
+				&& current_b->number > best_match_index)
+			{
+				best_match_index = current_b->number;
+				target_node = current_b;
+			}
+			current_b = current_b->next;
+		}
+		if (best_match_index == LONG_MIN)
+			a->target_node = find_highest(b);
+		else
+			a->target_node = target_node;
+		a = a->next;
 	}
 }
 
-static void	set_cheapest(t_stack_node *b)
+static void	set_cheapest(t_stack_node *a)
 {
 	t_stack_node	*best_match;
 	long			best_match_value;
 
-	if (b == NULL)
+	if (a == NULL)
 		return ;
 	best_match_value = LONG_MAX;
-	while (b)
+	while (a)
 	{
-		if (b->push_cost < best_match_value)
+		if (a->push_cost < best_match_value)
 		{
-			best_match_value = b->push_cost;
-			best_match = b;
+			best_match_value = a->push_cost;
+			best_match = a;
 		}
-		b = b->next;
+		a = a->next;
 	}
 	best_match->cheapest = true;
 }
 
-void	init_nodes(t_stack_node *a, t_stack_node *b)
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
-	set_curent_index(a);
-	set_curent_index(b);
-	set_target_node(a, b);
+	set_current_index(a);
+	set_current_index(b);
+	set_target_a(a, b);
 	set_price(a, b);
-	set_cheapest(b);
+	set_cheapest(a);
 }

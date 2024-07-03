@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 22:21:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/29 16:38:21 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:01:59 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,74 +30,31 @@ int	correct_format(char *str)
 	return (1);
 }
 
-int	verif_is_int(char **argv)
+int	verif_is_int(char *argv)
 {
-	int	i;
-
-	i = 1;
-	while (argv[i])
-	{
-		if (!correct_format(argv[i]))
+	if (!correct_format(argv))
 			return (0);
-		i++;
-	}
 	return (1);
 }
 
-int	parsing_args(int argc, char **argv, t_args *args)
+void	stack_init(t_stack_node **a, char **argv, bool flag)
 {
-	long	number;
+	long	nbr;
 	int		i;
-	int		j;
-
-	i = 1;
-	j = 0;
-	if (verif_is_int(argv) == 0)
-		display_error("error\n");
-	args->params = (int *) malloc(sizeof (int) * (argc - 1));
-	if (!args->params)
-		return (0);
-	while (argv[i])
-	{
-		number = ft_atol(argv[i]);
-		if (number > INT_MAX || number < INT_MIN)
-		{
-			free(args->params);
-			display_error("error\n");
-		}
-		args->params[j] = number;
-		j++;
-		i++;
-	}
-	args->nb_params = argc - 1;
-	return (0);
-}
-
-int	split_args(char *argv, t_args *args)
-{
-	int		i;
-	int		j;
-	char	**args_split;
 
 	i = 0;
-	j = 0;
-	args_split = verif_split(argv, args);
-	args->params = (int *) malloc(sizeof(int) * (array_len(args_split)));
-	if (!args->params)
-		return (0);
-	while (args_split[i])
+	while (argv[i])
 	{
-		if (ft_atol(args_split[i]) > INT_MAX
-			|| ft_atol(args_split[i]) < INT_MIN)
-		{
-			free_array(args_split);
-			free(args->params);
-			display_error("error\n");
-		}
-		args->params[j] = ft_atol(args_split[i]);
-		j++;
-		i++;
+		if (!verif_is_int(argv[i]))
+			error_free(a, argv, flag);
+		nbr = ft_atol(argv[i]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			error_free(a, argv, flag);
+		if (check_double(*a, (int)nbr))
+			error_free(a, argv, flag);
+		create_node(a, (int)nbr);
+		++i;
 	}
-	free_array(args_split);
-	return (1);
+	if(flag)
+		free_matrix(argv);
 }

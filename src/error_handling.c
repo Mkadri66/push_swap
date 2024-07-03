@@ -6,74 +6,40 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:22:23 by mkadri            #+#    #+#             */
-/*   Updated: 2024/06/26 16:59:59 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:45:49 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_double(t_args *args)
+int	check_double(t_stack_node *a, int number)
 {
-	int	i;
-	int	len;
-	int	j;
-
-	i = 0;
-	j = 0;
-	len = args->nb_params;
-	if (len == 2)
+	if (NULL == a)
+		return (0);
+	while (a)
 	{
-		if (args->params[0] == args->params[1])
+		if (a->number == number)
 			return (1);
-	}
-	while (i <= len)
-	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (args->params[i] == args->params[j])
-				return (1);
-			j++;
-		}
-		i++;
+		a = a->next;
 	}
 	return (0);
 }
 
-int	is_sorted(t_args *args)
+bool	is_sorted(t_stack_node *a)
 {
-	int	i;
-
-	i = 0;
-	while (i < args->nb_params)
+	if (!a)
+		return (1);
+	while (a->next)
 	{
-		if (args->params[i + 1] && (args->params[i] > args->params[i + 1]))
-		{
-			return (0);
-		}
-		i++;
+		if (a->number > a->next->number)
+			return (false);
+		a = a->next;
 	}
-	return (1);
+	return (true);
 }
 
 void	display_error(char *str)
 {
 	ft_printf(str);
 	exit(1);
-}
-
-void	check_input(t_args *args)
-{
-	if (check_double(args))
-	{
-		free(args->params);
-		ft_printf("error\n");
-		exit(1);
-	}
-	if (is_sorted(args))
-	{
-		free(args->params);
-		exit(1);
-	}
-	(void) args;
 }
