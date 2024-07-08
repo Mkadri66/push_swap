@@ -6,13 +6,13 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 18:56:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 19:48:31 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/05 12:16:41 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	rotate_both(t_stack_node **a, t_stack_node **b,
+void	rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest)
 {
 	while (*b != cheapest->target_node && *a != cheapest)

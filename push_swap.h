@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:02:07 by mkadri            #+#    #+#             */
-/*   Updated: 2024/07/03 19:51:37 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/07/05 12:19:42 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void			rotate(t_stack_node **stack);
 void			ra(t_stack_node **a, bool checker);
 void			rb(t_stack_node **b, bool checker);
 void			rr(t_stack_node **a, t_stack_node **b, bool checker);
+void			rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest);
 
 /* Push functions */
 
@@ -111,6 +113,7 @@ void			master_sort(t_stack_node **a, t_stack_node **b);
 /* Set functions */
 
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
+void			init_nodes_b(t_stack_node *a, t_stack_node *b);
 void			set_current_index(t_stack_node *stack);
 void			set_target_node(t_stack_node *a, t_stack_node *b);
 
